@@ -26,6 +26,22 @@ public class Login extends TestBase {
 
         Assert.assertTrue(app.getUser().isLoggedSuccess());
 
+    }
+    @Test
+    public void loginWithEmptyPassword() throws InterruptedException {
+        app.getUser().initLogin();
+        app.getUser().fillLoginForm("juliakliot.jk@gmail.com", "misha");
+        app.getUser().submitLogin();
+
+
+    }
+
+    @Test
+    public void loginWithNegPassword() throws InterruptedException {
+        app.getUser().initLogin();
+        app.getUser().fillLoginForm("juliakliot.jk@gmail.com", "");
+        app.getUser().submitLogin();
+
 
     }
 

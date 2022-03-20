@@ -15,9 +15,10 @@ public class UserHelper extends HelperBase {
         click(By.cssSelector("[href='/login']"));
 
     }
-    public void fillLoginForm(String email, String password) {
+    public void fillLoginForm(String email, String password) throws InterruptedException {
         type(By.cssSelector("#user"), email);
         click(By.cssSelector("#login"));
+        Thread.sleep(5000);
         type(By.cssSelector("#password"), password);
     }
     public void submitLogin() {
@@ -25,8 +26,8 @@ public class UserHelper extends HelperBase {
     }
     public boolean isLoggedSuccess(){
         WebDriverWait wait = new WebDriverWait(wd,10);
-        wait.until(ExpectedConditions.visibilityOf(wd.findElement(By.cssSelector("._2ft40Nx3NZII2i"))));
-        return  wd.findElement(By.cssSelector("._2ft40Nx3NZII2i")).isDisplayed();
+        wait.until(ExpectedConditions.visibilityOf(wd.findElement(By.cssSelector("[data-test-id='header-member-menu-button']"))));
+        return  wd.findElement(By.cssSelector("[data-test-id='header-member-menu-button']")).isDisplayed();
 
     }
     public void logOut(){
@@ -37,5 +38,16 @@ public class UserHelper extends HelperBase {
     }
     public boolean isLogged(){
         return  wd.findElements(By.cssSelector("[data-test-id='header-member-menu-button']")).size()>0;
+    }
+    public void login(String email, String password) throws InterruptedException {
+        click(By.cssSelector("[href='/login']"));
+        type(By.cssSelector("#user"), email);
+        click(By.cssSelector("#login"));
+        Thread.sleep(5000);
+        type(By.name("password"),password);
+        click(By.id("login-submit"));
+
+
+
     }
 }

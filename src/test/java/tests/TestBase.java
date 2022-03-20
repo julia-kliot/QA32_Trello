@@ -20,7 +20,7 @@ public class TestBase {
 
 
     @BeforeSuite
-    public void setApp() {
+    public void setApp() throws InterruptedException {
         app.init();
     }
 
