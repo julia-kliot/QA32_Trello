@@ -1,5 +1,6 @@
 package tests;
 
+import model.User;
 import org.openqa.selenium.By;
 import org.testng.Assert;
 import org.testng.annotations.BeforeMethod;
@@ -27,6 +28,20 @@ public class Login extends TestBase {
         Assert.assertTrue(app.getUser().isLoggedSuccess());
 
     }
+    @Test
+    public void loginSuccessmodel() throws InterruptedException {
+        User user = new User().withEmail("juliakliot.jk@gmail.com").withPassword("misha240613");
+
+        app.getUser().initLogin();
+        app.getUser().fillLoginForm(user);
+        app.getUser().submitLogin();
+        //Thread.sleep(5000);
+        app.getUser().isLoggedSuccess();
+
+        Assert.assertTrue(app.getUser().isLoggedSuccess());
+
+    }
+
     @Test
     public void loginWithEmptyPassword() throws InterruptedException {
         app.getUser().initLogin();

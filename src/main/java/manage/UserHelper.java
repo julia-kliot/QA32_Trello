@@ -1,5 +1,6 @@
 package manage;
 
+import model.User;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.ui.ExpectedConditions;
@@ -21,6 +22,14 @@ public class UserHelper extends HelperBase {
         Thread.sleep(5000);
         type(By.cssSelector("#password"), password);
     }
+    public void fillLoginForm(User user) throws InterruptedException {
+        type(By.cssSelector("#user"), user.getEmail());
+        click(By.cssSelector("#login"));
+        Thread.sleep(5000);
+        type(By.cssSelector("#password"), user.getPassword());
+    }
+
+
     public void submitLogin() {
         click(By.cssSelector("#login-submit"));
     }

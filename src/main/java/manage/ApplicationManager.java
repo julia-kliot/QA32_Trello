@@ -27,9 +27,7 @@ public class ApplicationManager {
         user.login("juliakliot.jk@gmail.com","misha240613");
     }
 
-    public BoardHelper getBoard() {
-        return board;
-    }
+
 
     public void stop(){
         //wd.close();
@@ -38,5 +36,7 @@ public class ApplicationManager {
 
     public UserHelper getUser() {
         return user;
+    }
+    public BoardHelper getBoard() {return board;
     }
 }
