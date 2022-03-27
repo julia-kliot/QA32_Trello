@@ -9,8 +9,8 @@ import org.testng.annotations.Test;
 public class Login extends TestBase {
 
     @BeforeMethod
-    public void preconditions(){
-        if(app.getUser().isLogged()){
+    public void preconditions() {
+        if (app.getUser().isLogged()) {
             app.getUser().logOut();
         }
 
@@ -28,10 +28,11 @@ public class Login extends TestBase {
         Assert.assertTrue(app.getUser().isLoggedSuccess());
 
     }
+
     @Test
     public void loginSuccessmodel() throws InterruptedException {
-        User user = new User().withEmail("juliakliot.jk@gmail.com").withPassword("misha240613");
 
+        User user = User.builder().email("juliakliot.jk@gmail.com").password("misha240613").build();
         app.getUser().initLogin();
         app.getUser().fillLoginForm(user);
         app.getUser().submitLogin();
