@@ -12,6 +12,8 @@ public class ApplicationManager {
 
     UserHelper user;
     BoardHelper board;
+    CardHelper card;
+    ListHelper list;
 
     public void init() throws InterruptedException {
         ChromeOptions chromeOptions = new ChromeOptions();
@@ -22,21 +24,33 @@ public class ApplicationManager {
         wd.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
         wd.navigate().to("https://trello.com/");
 
-        user= new UserHelper(wd);
+        user = new UserHelper(wd);
         board = new BoardHelper(wd);
-        user.login("juliakliot.jk@gmail.com","misha240613");
+        card = new CardHelper(wd);
+        list = new ListHelper(wd);
+
+        user.login("juliakliot.jk@gmail.com", "misha240613");
     }
 
 
-
-    public void stop(){
+    public void stop() {
         //wd.close();
-       // wd.quit();
+        // wd.quit();
     }
 
     public UserHelper getUser() {
         return user;
     }
-    public BoardHelper getBoard() {return board;
+
+    public BoardHelper getBoard() {
+        return board;
+    }
+
+    public CardHelper getCard() {
+        return card;
+    }
+
+    public ListHelper getList() {
+        return list;
     }
 }
