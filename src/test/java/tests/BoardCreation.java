@@ -13,6 +13,7 @@ public class BoardCreation extends TestBase {
 
         Board board = Board.builder().title("testQA32").build();
         int boardCountBeforeCreation = app.getBoard().getBoardCount();
+        logger.info("Test boardcreation 1"+ board.getTitle());
         app.getBoard().initBoardCreationFromHeader();
         app.getBoard().fillBoardCreationForm(board);
         app.getBoard().scrollDowmTheForm();
@@ -21,6 +22,7 @@ public class BoardCreation extends TestBase {
         app.getBoard().pause(2000);
         app.getBoard().returnToHomePage();
         int boardCountAfterCreation = app.getBoard().getBoardCount();
+        logger.info("Board is created");
 
         Assert.assertEquals(boardCountAfterCreation, boardCountBeforeCreation + 1);
     }

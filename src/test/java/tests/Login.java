@@ -33,11 +33,13 @@ public class Login extends TestBase {
     public void loginSuccessmodel() throws InterruptedException {
 
         User user = User.builder().email("juliakliot.jk@gmail.com").password("misha240613").build();
+        logger.info("Test Login Positive 1"+ user.getEmail()+ " " +user. getPassword());
         app.getUser().initLogin();
         app.getUser().fillLoginForm(user);
         app.getUser().submitLogin();
         //Thread.sleep(5000);
         app.getUser().isLoggedSuccess();
+        logger.info("Logged---");
 
         Assert.assertTrue(app.getUser().isLoggedSuccess());
 
