@@ -24,6 +24,9 @@ public class BoardHelper extends HelperBase {
     public void fillBoardCreationForm(Board board) {
         type(By.cssSelector("[data-test-id = 'create-board-title-input']"), board.getTitle());
     }
+    public void  fillBoardCreationForm(String boardName){
+        type(By.cssSelector("[data-test-id = 'create-board-title-input']"), boardName);
+    }
      public  void scrollDowmTheForm(){
          Actions action = new Actions(wd);
          WebElement container = wd.findElement(By.cssSelector("[data-test-id='header-create-menu-popover']"));
@@ -34,9 +37,9 @@ public class BoardHelper extends HelperBase {
 
      }
 
-     public void  submitBoardCreation() throws InterruptedException {
+     public void  submitBoardCreation()  {
         click(By.cssSelector("[data-test-id='create-board-submit-button']"));
-        Thread.sleep(5000);
+
      }
 
      public boolean isCreated(){

@@ -1,13 +1,15 @@
 package tests;
 
+import manage.MyDataProvider;
 import model.Card;
 import org.testng.annotations.Test;
 
 public class CardCreation extends TestBase{
-    @Test
-    public void cardCreation(){
-        Card card = Card.builder().cardName("testQa32").color("green").build();
 
+
+    @Test(dataProvider = "dataCardCSV",dataProviderClass = MyDataProvider.class)
+    public void cardCreation(Card card){
+       // Card card = Card.builder().cardName("testQa32").color("green").build();
         app.getBoard().clickOnTheFirstBoard();
         app.getList().createList("TestQA32");
         app.getCard().initCardCreation();
