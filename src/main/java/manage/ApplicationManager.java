@@ -4,6 +4,8 @@ import io.github.bonigarcia.wdm.WebDriverManager;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
+import org.openqa.selenium.edge.EdgeDriver;
+import org.openqa.selenium.remote.BrowserType;
 import org.openqa.selenium.support.events.EventFiringWebDriver;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -19,12 +21,23 @@ public class ApplicationManager {
     CardHelper card;
     ListHelper list;
     AtlassianHelper atlassian;
+    String browser;
+
+    public ApplicationManager(String browser) {
+        this.browser = browser;
+    }
 
     public void init() throws InterruptedException {
-        ChromeOptions chromeOptions = new ChromeOptions();
-        WebDriverManager.chromedriver().setup();
+
+        if (browser.equals(BrowserType.CHROME)) {
+            wd = new EventFiringWebDriver(new ChromeDriver());
+        } else if (browser.equals(BrowserType.EDGE)) {
+            wd = new EventFiringWebDriver(new EdgeDriver());
+        }
+        //ChromeOptions chromeOptions = new ChromeOptions();
+       // WebDriverManager.chromedriver().setup();
        // wd = new ChromeDriver();
-        wd = new EventFiringWebDriver(new ChromeDriver());
+        //wd = new EventFiringWebDriver(new ChromeDriver());
         System.setProperty("webdriver.chromedriver", "C:/Users/julia/Documents/QA/QA_Automation/QA/QA32_Trello/chromedriver.exe");
         logger.info("Test starts");
         wd.manage().window().maximize();

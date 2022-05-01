@@ -16,5 +16,14 @@ public class CardCreation extends TestBase{
         app.getCard().fillCreationForm(card);
         app.getCard().submitCreation();
     }
+@Test (groups = {"board"})
+    public void cardCreation2 (){
+         Card card = Card.builder().cardName("testQa32").color("green").build();
+        app.getBoard().clickOnTheFirstBoard();
+        app.getList().createList("TestQA32");
+        app.getCard().initCardCreation();
+        app.getCard().fillCreationForm(card);
+        app.getCard().submitCreation();
+    }
 
 }
